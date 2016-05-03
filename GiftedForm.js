@@ -27,6 +27,7 @@ let RowWidget = require('./widgets/RowWidget');
 let LoadingWidget = require('./widgets/LoadingWidget');
 let HiddenWidget = require('./widgets/HiddenWidget');
 let PopoverWidget = require('./widgets/PopoverWidget');
+let CheckboxWidget = require('./widgets/CheckboxWidget');
 
 // @todo disable a field
 
@@ -52,6 +53,7 @@ var GiftedForm = React.createClass({
     LoadingWidget: LoadingWidget,
     HiddenWidget: HiddenWidget,
     PopoverWidget: PopoverWidget,
+    CheckboxWidget: CheckboxWidget,
   },
 
   getDefaultProps() {
