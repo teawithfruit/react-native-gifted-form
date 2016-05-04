@@ -121,6 +121,7 @@ module.exports = React.createClass({
       fontSize: 15,
       color: '#000',
       paddingLeft: 10,
+      width: 280
     },
 
     listView: {

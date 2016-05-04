@@ -9,11 +9,10 @@ var {
 } = React;
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
-var TimerMixin = require('react-timer-mixin');
 import CheckBox from 'react-native-checkbox';
 
 module.exports = React.createClass({
-  mixins: [TimerMixin, WidgetMixin],
+  mixins: [WidgetMixin],
 
   getDefaultProps() {
     return {
@@ -42,6 +41,7 @@ module.exports = React.createClass({
             <CheckBox
               label={this.state.item}
               labelBefore={true}
+              labelStyle={{width: 200}}
               checked={this.state.value}
               onChange={(checked) => this.setItem(checked)}
             />
