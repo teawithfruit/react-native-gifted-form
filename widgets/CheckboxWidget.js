@@ -30,6 +30,7 @@ module.exports = React.createClass({
 
   setItem(value) {
     this.setState({value: value});
+    if(this.props.onChange) this.props.onChange(this.props.name, value);
     this._onChange(this.state.value);
   },
 
@@ -40,7 +41,6 @@ module.exports = React.createClass({
           <View style={this.getStyle('row')}>
             <CheckBox
               label={this.state.item}
-              labelBefore={true}
               labelStyle={{width: 200}}
               checked={this.state.value}
               onChange={(checked) => this.setItem(checked)}

@@ -20,16 +20,20 @@ module.exports = React.createClass({
     return {
       type: 'PopoverWidget',
       onPress: () => {},
+      rows: [],
+      value: '',
       disclosure: true,
     };
   },
 
   getInitialState() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    var rows = ['row 1', 'row 2', 'row 3', 'row 4', 'row 5'];
+    var rows = this.props.rows;
+
+    var value = this.props.value != '' ? this.props.value : this.props.placeholder;
 
     return {
-      item: this.props.title,
+      value: value,
       isVisible: false,
       dataSource: ds.cloneWithRows(rows),
     };
@@ -40,12 +44,12 @@ module.exports = React.createClass({
   },
 
   closePopover() {
-    this._onChange(this.state.item)
+    this._onChange(this.state.value)
     this.setState({isVisible: false});
   },
 
   setItem(item) {
-    this.setState({item: item});
+    this.setState({value: item});
   },
 
   _renderDisclosure() {
@@ -63,7 +67,7 @@ module.exports = React.createClass({
 
   renderRow: function(rowData, sectionID, rowID, highlightRow) {
     return (
-      <TouchableOpacity onPress={() => { this.setItem(rowID); this.closePopover(); }}>
+      <TouchableOpacity onPress={() => { this.setItem(rowData); this.closePopover(); }}>
         <View style={{height: 50, borderBottomWidth: 1, borderBottomColor: '#eeeeee', padding: 5,}}>
           <Text>{rowData}</Text>
         </View>
@@ -77,7 +81,7 @@ module.exports = React.createClass({
         <View style={this.getStyle('rowContainer')}>
           <View style={this.getStyle('row')}>
             {this._renderImage()}
-            <Text numberOfLines={1} style={this.getStyle('title')} onPress={this.showPopover}>{this.state.item}</Text>
+            <Text numberOfLines={1} style={this.getStyle('title')} onPress={this.showPopover}>{this.state.value || this.props.placeholder}</Text>
             {this._renderDisclosure()}
           </View>
         </View>
