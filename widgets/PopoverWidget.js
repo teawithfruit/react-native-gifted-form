@@ -106,8 +106,7 @@ module.exports = React.createClass({
     },
     rowContainer: {
       backgroundColor: '#FFF',
-      borderBottomWidth: 1 / PixelRatio.get(),
-      borderColor: '#c8c7cc',
+      borderWidth: 2, borderColor: '#666666', marginBottom: 10, marginRight: 5
     },
     row: {
       flexDirection: 'row',
