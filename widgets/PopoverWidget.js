@@ -12,6 +12,7 @@ var {
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 var TimerMixin = require('react-timer-mixin');
 import Overlay from 'react-native-overlay';
+import Icon from 'react-native-vector-icons/Entypo'
 
 module.exports = React.createClass({
   mixins: [TimerMixin, WidgetMixin],
@@ -68,7 +69,7 @@ module.exports = React.createClass({
   renderRow: function(rowData, sectionID, rowID, highlightRow) {
     return (
       <TouchableOpacity onPress={() => { this.setItem(rowData); this.closePopover(); }}>
-        <View style={{height: 50, borderBottomWidth: 1, borderBottomColor: '#eeeeee', padding: 5,}}>
+        <View style={{height: 50, borderBottomWidth: 1, borderBottomColor: '#eeeeee', padding: 15,}}>
           <Text>{rowData}</Text>
         </View>
       </TouchableOpacity>
@@ -91,6 +92,16 @@ module.exports = React.createClass({
              <ListView
                style={this.getStyle('listView')}
                dataSource={this.state.dataSource}
+               stickyHeaderIndices={[0]}
+               renderHeader={() => {
+                 return (
+                   <View style={{height: 40}}>
+                     <TouchableOpacity onPress={this.closePopover}>
+                       <Icon name="cross" style={{position: 'absolute', right: 10, top: 10}} size={20} color="#C41A23" />
+                     </TouchableOpacity>
+                   </View>
+                 )
+               }}
                renderRow={this.renderRow} />
            </View>
          </Overlay>
@@ -129,10 +140,10 @@ module.exports = React.createClass({
 
     listView: {
       flex: 1,
-      marginLeft: 100,
-      marginRight: 100,
-      marginTop: (Dimensions.get('window').height / 2) / 1.5,
-      marginBottom: (Dimensions.get('window').height / 2) / 1.5,
+      marginLeft: 250,
+      marginRight: 250,
+      marginTop: (Dimensions.get('window').height / 2) / 1.4,
+      marginBottom: (Dimensions.get('window').height / 2) / 1.4,
       backgroundColor: '#ffffff',
     },
     wrapper: {
