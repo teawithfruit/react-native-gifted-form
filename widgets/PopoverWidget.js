@@ -74,7 +74,7 @@ module.exports = React.createClass({
   },
 
   renderRow: function(rowData, sectionID, rowID, highlightRow) {
-    var lng = ''
+    var lng = '';
     if(rowData == 'EN') lng = 'English';
     if(rowData == 'DE') lng = 'German';
     if(rowData == 'FR') lng = 'French';
@@ -85,7 +85,7 @@ module.exports = React.createClass({
     return (
       <TouchableOpacity onPress={() => { this.setItem(rowData); this.closePopover(); }}>
         <View style={{height: 50, borderBottomWidth: 1, borderBottomColor: '#eeeeee', padding: 15,}}>
-          <Text>{rowData}</Text>
+          <Text>{lng}</Text>
         </View>
       </TouchableOpacity>
    )
