@@ -50,6 +50,13 @@ module.exports = React.createClass({
   },
 
   setItem(item) {
+    if(item == 'English') item = 'EN';
+    if(item == 'German') item = 'DE';
+    if(item == 'French') item = 'FR';
+    if(item == 'Spanish') item = 'ES';
+    if(item == 'Russian') item = 'RU';
+    if(item == 'Chinese') item = 'CN';
+
     this.setState({value: item});
   },
 
@@ -67,6 +74,14 @@ module.exports = React.createClass({
   },
 
   renderRow: function(rowData, sectionID, rowID, highlightRow) {
+    var lng = ''
+    if(rowData == 'EN') lng = 'English';
+    if(rowData == 'DE') lng = 'German';
+    if(rowData == 'FR') lng = 'French';
+    if(rowData == 'ES') lng = 'Spanish';
+    if(rowData == 'RU') lng = 'Russian';
+    if(rowData == 'CN') lng = 'Chinese';
+
     return (
       <TouchableOpacity onPress={() => { this.setItem(rowData); this.closePopover(); }}>
         <View style={{height: 50, borderBottomWidth: 1, borderBottomColor: '#eeeeee', padding: 15,}}>
