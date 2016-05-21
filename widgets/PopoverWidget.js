@@ -82,6 +82,8 @@ module.exports = React.createClass({
     if(rowData == 'RU') lng = 'Russian';
     if(rowData == 'CN') lng = 'Chinese';
 
+    if(lng == '') lng = rowData;
+
     return (
       <TouchableOpacity onPress={() => { this.setItem(rowData); this.closePopover(); }}>
         <View style={{height: 50, borderBottomWidth: 1, borderBottomColor: '#eeeeee', padding: 15,}}>
