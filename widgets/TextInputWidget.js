@@ -85,7 +85,8 @@ module.exports = React.createClass({
 
             onFocus={this.onFocus}
             onBlur={this.onBlur}
-
+            autoCorrect={false}
+            autoCapitalize='none'
             onChangeText={this._onChange}
             value={this.state.value}
           />
