@@ -94,14 +94,18 @@ module.exports = React.createClass({
   },
 
   render() {
+    var theColor = this.state.value == '' ? '#c7c7cc' : '#000';
+
     return (
       <View>
         <View style={this.getStyle('rowContainer')}>
-          <View style={this.getStyle('row')}>
-            {this._renderImage()}
-            <Text numberOfLines={1} style={this.getStyle('title')} onPress={this.showPopover}>{this.state.value || this.props.placeholder}</Text>
-            {this._renderDisclosure()}
-          </View>
+          <TouchableOpacity onPress={this.showPopover}>
+            <View style={this.getStyle('row')}>
+              {this._renderImage()}
+              <Text numberOfLines={1} style={[this.getStyle('title'), {color: theColor}]}>{this.state.value || this.props.placeholder}</Text>
+              {this._renderDisclosure()}
+            </View>
+          </TouchableOpacity>
         </View>
 
         <Overlay isVisible={this.state.isVisible} onClose={() => this.closePopover()}>
